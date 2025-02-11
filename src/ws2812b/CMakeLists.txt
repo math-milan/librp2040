@@ -1,4 +1,4 @@
-add_library(ws2812lib
+add_library(ws2812b
         ws2812.cpp
         )
 
