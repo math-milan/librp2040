@@ -74,12 +74,6 @@ void ws2812::setRGB(uint8_t r, uint8_t g, uint8_t b, int number){
     led[number] = this->urgb_u32(r, g, b);
 }
 
-void ws2812::setHSV(float H, float S,float V, int number){
-    if (this->number_of_leds < number){
-        return;
-    }
-    led[number] = this->convertHSV_urgb_u32(H, S, V);
-}
 
 void ws2812::setHEX(uint32_t hex, int number){
     if (this->number_of_leds < number){
@@ -94,20 +88,7 @@ void ws2812::setAllRGB(uint8_t r, uint8_t g, uint8_t b){
     }
 }
 
-void ws2812::setAllHSV(float H, float S,float V){
-    uint32_t hex = this->convertHSV_urgb_u32(H, S, V);
-    for (int i = 0; i < this->number_of_leds; i++){
-        led[i] = hex;
-    }
-}
-
-void ws2812::setAllHEX(uint32_t hex){
-    for (int i = 0; i < this->number_of_leds; i++){
-        led[i] = hex;
-    }
-}
-
-void ws2812::update(){
+void ws2812::flip(){
     for (int i = 0; i < this->number_of_leds; i++)
     {
         for (int x = i; x < this->number_of_leds; x++)

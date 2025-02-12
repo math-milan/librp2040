@@ -37,27 +37,19 @@ class ws2812{
         uint32_t convertHSV_urgb_u32(float H, float S,float V);
     public:
         /// @brief Pushes all the Data to the LED's
-        void update(); // Update all Pixel Colors from the Array Storage
+        void flip(); // Update all Pixel Colors from the Array Storage
         /// @brief Set one off the LED's with rgb values
         /// @param r Red
         /// @param g Green
         /// @param b Blou
         /// @param number Number of the LED;
         void setRGB(uint8_t r, uint8_t g, uint8_t b, int number); 
-        /// @brief Set one off the LED's with HSV valeus that get convertet to RGB
-        /// @param H Hue
-        /// @param S Sturation 
-        /// @param V Value
-        /// @param number Number of the LED
-        void setHSV(float H, float S,float V, int number);
         /// @brief Set one off the LED's with a RGB Hex value
         /// @param hex RGB Hex code
         /// @param number Number of the LED
         void setHEX(uint32_t hex, int number);
 
         void setAllRGB(uint8_t r, uint8_t g, uint8_t b);
-
-        void setAllHSV(float H, float S,float V);
 
         void setAllHEX(uint32_t hex);
 };
