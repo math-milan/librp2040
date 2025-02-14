@@ -1,9 +1,9 @@
 #include "as5600.h"
 
-namespace AS5600{
+namespace as5600{
     
-    AS5600::AS5600(i2c_inst_t *i2c_inst){
-        this->i2c_inst = i2c_inst;
+    AS5600::AS5600(i2c_inst_t *i2c){
+        this->i2c_inst = i2c;
     }
     
     AS5600::~AS5600(){
@@ -26,6 +26,7 @@ namespace AS5600{
             setErrorFlag();
             return -1;
         }
+
         uint16_t data = read(2);
         
         return data & 0xFFF; // Returns 12 bits
@@ -69,7 +70,7 @@ namespace AS5600{
             src[0] = data & 0xF00;
             src[1] = data & 0xFF;
         }
-        if ( i2c_write_blocking(i2c_inst, AS5600_ADDRESS, src, len, true) == len ){
+        if ( i2c_write_blocking(i2c_inst, AS5600_ADDRESS, src, len, false) == len ){
             setErrorFlag();
             return false;
         }
@@ -83,7 +84,7 @@ namespace AS5600{
         if (len >= DST_BUFFER_LEN){
             return false;
         }
-        if (i2c_read_blocking(i2c_inst, AS5600_ADDRESS, dst, len, true) != len){
+        if (i2c_read_blocking(i2c_inst, AS5600_ADDRESS, dst, len, false) != len){
             setErrorFlag();
             return 0xFFFF;
         }

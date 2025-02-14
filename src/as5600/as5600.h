@@ -1,6 +1,6 @@
 #include "hardware/i2c.h"
 
-namespace AS5600{
+namespace as5600{
     #define AS5600_ADDRESS 0x36
 
     enum Register_Address{
@@ -98,7 +98,7 @@ namespace AS5600{
     
     class AS5600{ 
         public:
-            AS5600(i2c_inst_t *i2c_inst);
+            AS5600(i2c_inst_t *i2c);
             ~AS5600();
 
             // bool get_config(config *Config);
