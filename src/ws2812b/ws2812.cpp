@@ -88,6 +88,14 @@ void ws2812::setAllRGB(uint8_t r, uint8_t g, uint8_t b){
     }
 }
 
+
+void ws2812::setAllHEX(uint32_t hex){
+    for (int i = 0; i < this->number_of_leds; i++){
+        led[i] = hex;
+    }
+}
+
+
 void ws2812::flip(){
     for (int i = 0; i < this->number_of_leds; i++)
     {

@@ -1,6 +1,17 @@
 #include "at24c01c.h"
 
-bool i2c_flash::at24c01c::writeByte(uint8_t addr, uint8_t data){
+i2c_flash::at24c01c::at24c01c(i2c_inst_t *i2c_instance, uint8_t addr)
+{
+    i2c_inst = i2c_instance;
+    device_addr = addr;
+}
+
+i2c_flash::at24c01c::~at24c01c()
+{
+}
+
+bool i2c_flash::at24c01c::writeByte(uint8_t addr, uint8_t data)
+{
     while(!writabel()){
         sleep_ms(1);
     }
