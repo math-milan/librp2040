@@ -98,3 +98,10 @@ void ws2812::flip(){
         
     }
 }
+
+void ws2812::setLEDs(uint16_t *data, int len){
+    if (number_of_leds < len){
+        return;
+    }
+    memcpy(led, data, len);
+}

@@ -1,6 +1,8 @@
 #include "hardware/i2c.h"
 #include <string.h>
 
+#ifndef at24c0xc_H
+#define at24c0xc_H
 namespace i2c_flash{
     class at24c01c{
         public:
@@ -23,3 +25,5 @@ namespace i2c_flash{
 
     };
 }
+
+#endif

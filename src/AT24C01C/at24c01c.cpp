@@ -1,8 +1,8 @@
 #include "at24c01c.h"
 
 bool i2c_flash::at24c01c::writeByte(uint8_t addr, uint8_t data){
-    if (!writabel()){
-        return false;
+    while(!writabel()){
+        sleep_ms(1);
     }
     last_write = time_us_64();
 
@@ -39,7 +39,7 @@ int16_t i2c_flash::at24c01c::readCurrent(uint8_t *dst)
 
 int16_t i2c_flash::at24c01c::readRandom(uint8_t addr, uint8_t *dst){
     if (i2c_write_blocking(i2c_inst, device_addr, &addr, 1, true) != 1){
-        return false;
+        return PICO_ERROR_GENERIC;
     }
     return readCurrent(dst);
 }

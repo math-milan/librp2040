@@ -1,5 +1,9 @@
 #include "ws2812.pio.h"
+// All my drivers will be in c going forward this will be converted to c
 
+
+#ifndef ws2812b_H
+#define ws2812b_H
 
 class ws2812{
     public:
@@ -52,4 +56,8 @@ class ws2812{
         void setAllRGB(uint8_t r, uint8_t g, uint8_t b);
 
         void setAllHEX(uint32_t hex);
+
+        void setLEDs(uint16_t *data, int len);
 };
+
+#endif
