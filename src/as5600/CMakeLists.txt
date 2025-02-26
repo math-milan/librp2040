@@ -1,6 +1,8 @@
 add_library(as5600  STATIC
-    as5600.cpp
+    as5600.c
 )
+
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 target_link_libraries(as5600
     pico_stdlib
