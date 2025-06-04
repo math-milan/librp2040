@@ -22,7 +22,7 @@ int8_t at24c02c_writePage(at24c02c_inst *instance, uint8_t addr, uint8_t *data, 
     }
 
     i2c_write_blocking(instance->i2c_inst, instance->device_addr, &addr, 1, true);
-    return i2c_write_blocking(instance->i2c_inst, data, len, false) == len;
+    return i2c_write_blocking(instance->i2c_inst, instance->device_addr, data, len, false) == len;
 }
 
 int16_t at24c02c_readRandom(at24c02c_inst *instance, uint8_t addr){

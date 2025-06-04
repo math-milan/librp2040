@@ -4,10 +4,10 @@
 #ifndef at24c0xc_H
 #define at24c0xc_H
 
-struct at24c02c_inst{
+typedef struct{
     i2c_inst_t *i2c_inst;
     uint8_t device_addr;
-};
+}at24c02c_inst;
 
 bool at24c02c_init(at24c02c_inst *instance, i2c_inst_t *i2c_inst, uint8_t device_addr);
 /// @brief Write one Byte of data to random addres
